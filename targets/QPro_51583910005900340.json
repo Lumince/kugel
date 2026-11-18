@@ -1,0 +1,40 @@
+{
+  "name": "QPro_51583910005900340",
+  "description": "build 51583910005900340, kernel 4.19.325-cip132-st16-gc377d663ee77",
+  "device": {
+    "build_incremental": "51583910005900340",
+    "vermagic": "4.19.325-cip132-st16-gc377d663ee77"
+  },
+  "kernel": {
+    "text_symbol": "_text",
+    "text_kind": "direct",
+    "text_base": "0xffffff8008080000",
+    "offsets": {
+      "OFF_COMMIT_CREDS": "0x6b4d4",
+      "OFF_ROOT_USER": "0x1b59620",
+      "OFF_INIT_USER_NS": "0x1b59430",
+      "OFF_INIT_GROUPS": "0x1b5a418",
+      "OFF_SELINUX_STATE": "0x1d34ff8",
+      "OFF_SECBLOB": "0x100ca78",
+      "OFF_SECBLOB_Q3": "0x1cf5010",
+      "OFF_RET": "0x6a1010",
+      "OFF_TRACE_WCHAN": "0x63ac8"
+    },
+    "ret_candidates": [
+      "0x6a1010"
+    ],
+    "trace_wchan_source": "bl-schedule-in-worker",
+    "trace_wchan_candidates": [
+      {
+        "offset": "0x63ac8",
+        "site": "bl schedule in worker_thread @0xffffff80080e3ac4",
+        "addr": "0xffffff80080e3ac8"
+      }
+    ],
+    "cap_last_cap": 37,
+    "cap_full": "0x3fffffffff",
+    "cred_off": "0x7e8",
+    "enforcing_off": 1,
+    "cred_security_off": "0x78"
+  }
+}

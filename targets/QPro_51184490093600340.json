@@ -1,0 +1,36 @@
+{
+  "name": "QPro_51184490093600340",
+  "description": "build 51184490093600340, kernel 4.19.325-cip123-st7-gd887c2bdd052",
+  "device": {
+    "build_incremental": "51184490093600340",
+    "vermagic": "4.19.325-cip123-st7-gd887c2bdd052"
+  },
+  "kernel": {
+    "text_symbol": "_text",
+    "text_kind": "direct",
+    "text_base": "0xffffff8008080000",
+    "offsets": {
+      "OFF_COMMIT_CREDS": "0x6b444",
+      "OFF_ROOT_USER": "0x1b593e0",
+      "OFF_INIT_USER_NS": "0x1b591f0",
+      "OFF_INIT_GROUPS": "0x1b5a1d8",
+      "OFF_SELINUX_STATE": "0x1d32ff8",
+      "OFF_SECBLOB": "0x100c878",
+      "OFF_RET": "0x69e99c",
+      "OFF_TRACE_WCHAN": "0x63a48"
+    },
+    "ret_candidates": [
+      "0x69e99c"
+    ],
+    "trace_wchan_source": "bl-schedule-in-worker",
+    "trace_wchan_candidates": [
+      {
+        "offset": "0x63a48",
+        "site": "bl schedule in worker_thread @0xffffff80080e3a44",
+        "addr": "0xffffff80080e3a48"
+      }
+    ],
+    "cap_last_cap": 37,
+    "cap_full": "0x3fffffffff"
+  }
+}

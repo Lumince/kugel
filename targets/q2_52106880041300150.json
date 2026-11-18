@@ -1,0 +1,36 @@
+{
+  "name": "q2_52106880041300150",
+  "description": "build 52106880041300150, kernel 4.19.325-cip124-st8-g42f3e978eeed",
+  "device": {
+    "build_incremental": "52106880041300150",
+    "vermagic": "4.19.325-cip124-st8-g42f3e978eeed"
+  },
+  "kernel": {
+    "text_symbol": "_text",
+    "text_kind": "direct",
+    "text_base": "0xffffff8008080000",
+    "offsets": {
+      "OFF_COMMIT_CREDS": "0x6b480",
+      "OFF_ROOT_USER": "0x1b59420",
+      "OFF_INIT_USER_NS": "0x1b59230",
+      "OFF_INIT_GROUPS": "0x1b5a218",
+      "OFF_SELINUX_STATE": "0x1d35ff8",
+      "OFF_SECBLOB": "0x100c878",
+      "OFF_RET": "0x69f20c",
+      "OFF_TRACE_WCHAN": "0x63a84"
+    },
+    "ret_candidates": [
+      "0x69f20c"
+    ],
+    "trace_wchan_source": "bl-schedule-in-worker",
+    "trace_wchan_candidates": [
+      {
+        "offset": "0x63a84",
+        "site": "bl schedule in worker_thread @0xffffff80080e3a80",
+        "addr": "0xffffff80080e3a84"
+      }
+    ],
+    "cap_last_cap": 37,
+    "cap_full": "0x3fffffffff"
+  }
+}
